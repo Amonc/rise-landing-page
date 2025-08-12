@@ -542,9 +542,9 @@ export default function Home() {
                   >
                     <CheckCircle className="h-16 w-16 text-accent mx-auto mb-4" />
                   </motion.div>
-                  <h4 className="text-2xl font-bold text-charcoal mb-2 font-serif">You're on the list!</h4>
+                  <h4 className="text-2xl font-bold text-charcoal mb-2 font-serif">You&apos;re on the list!</h4>
                   <p className="text-charcoal/70">
-                    We'll notify you as soon as RISE is ready for you.
+                    We&apos;ll notify you as soon as RISE is ready for you.
                   </p>
                 </motion.div>
               )}
