@@ -29,19 +29,40 @@ export default function Home() {
 
   const features = [
     {
-      icon: Shirt,
-      title: "Smart Closet Organization",
-      description: "AI-powered categorization and tagging of your garments",
+      icon: Camera,
+      title: "Barcode Scanning",
+      description: "Just scan the tag — RISE instantly adds it with brand, color, and style.",
+      image: "/images/barcode-scanning.png", // placeholder for later
     },
     {
-      icon: Cloud,
-      title: "Weather-Smart Suggestions",
-      description: "Get outfit recommendations based on real-time weather data",
+      icon: Zap,
+      title: "Receipt Importing",
+      description: "Upload receipts or email confirmations — your new items appear in your closet automatically.",
+      image: "/images/receipt-importing.gif", // placeholder for later
+    },
+    {
+      icon: Sparkles,
+      title: "AI Outfit Suggestions",
+      description: "Get full outfits based on weather, occasion, and your style.",
+      image: "/images/ai-suggestions.png", // placeholder for later
+    },
+    {
+      icon: Shield,
+      title: "Closet Type Onboarding",
+      description: "Choose Masculine or Feminine closet, answer a quick survey, and start organized instantly.",
+      image: "/images/onboarding.png", // placeholder for later
+    },
+    {
+      icon: TrendingUp,
+      title: "Color-Smart Styling",
+      description: "RISE only suggests outfits that work together — no clashing colors, no bad fits.",
+      image: "/images/color-smart.png", // placeholder for later
     },
     {
       icon: Calendar,
-      title: "Outfit Tracking",
-      description: "Keep track of what you wear and discover your style patterns",
+      title: "Worn Tracker",
+      description: "Keep track of what you've worn, so you never repeat too soon.",
+      image: "/images/worn-tracker.png", // placeholder for later
     },
   ];
 
@@ -75,29 +96,29 @@ export default function Home() {
   const steps = [
     {
       step: "01",
-      title: "Capture & Catalog",
-      description: "Take photos of your clothes and let AI categorize them automatically",
+      title: "Build Your Closet",
+      description: "Build your closet with barcode scans, photos, or receipt imports.",
       icon: Camera,
     },
     {
       step: "02",
-      title: "Get Suggestions",
-      description: "Receive personalized outfit recommendations based on weather and occasions",
+      title: "Get Outfit Suggestions",
+      description: "Get outfit suggestions tailored to weather, events, and your closet.",
       icon: Sparkles,
     },
     {
       step: "03",
-      title: "Track & Improve",
-      description: "Monitor your wearing patterns and discover new style combinations",
+      title: "Track & Evolve",
+      description: "Track worn history and evolve your style.",
       icon: TrendingUp,
     },
   ];
 
   const stats = [
-    { number: "50K+", label: "Active Users" },
-    { number: "2M+", label: "Garments Cataloged" },
-    { number: "95%", label: "User Satisfaction" },
-    { number: "4.8★", label: "App Store Rating" },
+    { number: "2 hrs", label: "Saved Weekly" },
+    { number: "30 sec", label: "To Perfect Outfit" },
+    { number: "100%", label: "Weather Matched" },
+    { number: "Zero", label: "Fashion Mistakes" },
   ];
 
   return (
@@ -110,26 +131,17 @@ export default function Home() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400 }}
           >
-            <div className="relative w-10 h-10">
-              <svg viewBox="0 0 40 40" className="w-full h-full">
-                <motion.circle 
-                  cx="20" 
-                  cy="20" 
-                  r="18" 
-                  fill="#9A917A" 
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                />
-                <motion.path 
-                  d="M20 8 L28 20 L20 32 L12 20 Z" 
-                  fill="#FBF4E1"
-                  initial={{ rotate: 0 }}
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                />
-              </svg>
-            </div>
+            <motion.img 
+              src="/images/icon.png"
+              alt="RISE Logo"
+              className="w-10 h-10 object-contain"
+              initial={{ scale: 0, rotate: 0 }}
+              animate={{ scale: 1, rotate: 360 }}
+              transition={{ 
+                scale: { duration: 0.5 },
+                rotate: { duration: 0.8, ease: "easeOut" }
+              }}
+            />
             <span className="text-2xl font-bold text-charcoal font-serif">RISE</span>
           </motion.div>
           <div className="hidden md:flex space-x-8">
@@ -172,8 +184,8 @@ export default function Home() {
                 Smarter Mornings Start Here
               </motion.div>
               <h1 className="text-4xl md:text-6xl font-bold text-charcoal mb-6 font-serif">
-                Your AI-Powered
-                <span className="text-accent block"> Wardrobe Assistant</span>
+                Your Closet's
+                <span className="text-accent block"> New Brain</span>
               </h1>
               <p className="text-xl text-charcoal/70 mb-8 max-w-4xl">
                 The only wardrobe app that truly understands your style. Organize, track, and get personalized outfit suggestions powered by cutting-edge AI.
@@ -187,6 +199,16 @@ export default function Home() {
                   >
                     <Sparkles className="mr-2 h-5 w-5" />
                     Join the Waitlist
+                  </Button>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button 
+                    size="lg" 
+                    variant="outline"
+                    className="border-2 border-accent text-accent hover:bg-accent hover:text-ivory text-lg px-8 py-6 transition-all duration-300"
+                    onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Watch RISE in Action
                   </Button>
                 </motion.div>
               </div>
@@ -213,11 +235,211 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Pain Points & Stats Section */}
+      <section className="py-20 bg-surface">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-16 font-serif">
+              Why Your Mornings Feel Harder Than They Should
+            </h2>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Stats */}
+            <div className="space-y-12">
+              {/* Time spent deciding stat */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="relative"
+              >
+                <div className="flex items-center gap-8 group">
+                  <div className="relative w-24 h-24 flex-shrink-0">
+                    <svg className="w-full h-full -rotate-90">
+                      <circle
+                        cx="48"
+                        cy="48"
+                        r="36"
+                        fill="none"
+                        stroke="#F5EFE1"
+                        strokeWidth="8"
+                      />
+                      <motion.circle
+                        cx="48"
+                        cy="48"
+                        r="36"
+                        fill="none"
+                        stroke="#9A917A"
+                        strokeWidth="8"
+                        strokeDasharray={`${(17/60) * 226} 226`}
+                        initial={{ strokeDashoffset: 226 }}
+                        whileInView={{ strokeDashoffset: 0 }}
+                        transition={{ duration: 1.5, ease: "easeOut" }}
+                      />
+                    </svg>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Clock className="h-8 w-8 text-accent" />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <motion.p 
+                      className="text-5xl font-bold text-accent mb-3 font-serif"
+                      initial={{ scale: 0.8 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 200 }}
+                    >
+                      17
+                    </motion.p>
+                    <p className="text-charcoal/80 text-xl leading-relaxed">
+                      minutes wasted every morning deciding what to wear
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Unworn clothes stat */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative"
+              >
+                <div className="flex items-center gap-8 group">
+                  <div className="relative w-24 h-24 flex-shrink-0">
+                    <svg className="w-full h-full -rotate-90">
+                      <circle
+                        cx="48"
+                        cy="48"
+                        r="36"
+                        fill="none"
+                        stroke="#F5EFE1"
+                        strokeWidth="8"
+                      />
+                      <motion.circle
+                        cx="48"
+                        cy="48"
+                        r="36"
+                        fill="none"
+                        stroke="#E44646"
+                        strokeWidth="8"
+                        strokeDasharray={`${0.62 * 226} 226`}
+                        initial={{ strokeDashoffset: 226 }}
+                        whileInView={{ strokeDashoffset: 0 }}
+                        transition={{ duration: 1.5, ease: "easeOut" }}
+                      />
+                    </svg>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Shirt className="h-8 w-8 text-accent" />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <motion.p 
+                      className="text-5xl font-bold text-error mb-3 font-serif"
+                      initial={{ scale: 0.8 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 200 }}
+                    >
+                      62%
+                    </motion.p>
+                    <p className="text-charcoal/80 text-xl leading-relaxed">
+                      of your closet goes unworn, taking up valuable space
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Wardrobe rotation stat */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="relative"
+              >
+                <div className="flex items-center gap-8 group">
+                  <div className="relative w-24 h-24 flex-shrink-0">
+                    <svg className="w-full h-full -rotate-90">
+                      <circle
+                        cx="48"
+                        cy="48"
+                        r="36"
+                        fill="none"
+                        stroke="#F5EFE1"
+                        strokeWidth="8"
+                      />
+                      <motion.circle
+                        cx="48"
+                        cy="48"
+                        r="36"
+                        fill="none"
+                        stroke="#CEC5AB"
+                        strokeWidth="8"
+                        strokeDasharray={`${0.2 * 226} 226`}
+                        initial={{ strokeDashoffset: 226 }}
+                        whileInView={{ strokeDashoffset: 0 }}
+                        transition={{ duration: 1.5, ease: "easeOut" }}
+                      />
+                    </svg>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <TrendingUp className="h-8 w-8 text-accent" />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <motion.p 
+                      className="text-5xl font-bold text-sand mb-3 font-serif"
+                      initial={{ scale: 0.8 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 200 }}
+                    >
+                      20%
+                    </motion.p>
+                    <p className="text-charcoal/80 text-xl leading-relaxed">
+                      of wardrobe actually worn — money wasted on the rest
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right side - Visual placeholder for image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="bg-gradient-to-br from-sand/30 to-accent/20 rounded-2xl p-8 h-[500px] flex items-center justify-center">
+                <p className="text-charcoal/50 text-center">
+                  [Split-screen visual: chaotic closet vs. RISE app]
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Closing Line */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-center mt-16"
+          >
+            <p className="text-2xl md:text-3xl font-semibold text-accent font-serif">
+              RISE fixes this in seconds — turning your closet into a smart, personal stylist.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Key Differentiators Section */}
       <section className="py-20 bg-gradient-to-br from-charcoal to-charcoal/95">
         <div className="container mx-auto px-6">
           <motion.div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-ivory mb-4 font-serif">Why RISE is Different</h2>
+            <h2 className="text-4xl font-bold text-ivory mb-4 font-serif">Why RISE is Unlike Any Other Wardrobe App</h2>
             <p className="text-ivory/80 text-xl">No other wardrobe app comes close</p>
           </motion.div>
 
@@ -256,31 +478,46 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <motion.div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-charcoal mb-4 font-serif">Core Features</h2>
-            <p className="text-charcoal/70 text-xl">Everything you need for a smarter wardrobe</p>
+            <p className="text-charcoal/70 text-xl">Visual blocks showcasing RISE's powerful capabilities</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="relative group"
               >
-                <motion.div whileHover={{ y: -10 }} transition={{ type: "spring", stiffness: 300 }}>
-                  <Card className="p-8 hover:shadow-2xl transition-all duration-300 border-sand/20 hover:border-accent/30">
+                <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 border-sand/20 hover:border-accent/30 h-full">
+                  {/* Image placeholder area */}
+                  <div className="relative h-48 bg-gradient-to-br from-sand/20 to-accent/10 overflow-hidden">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <p className="text-charcoal/30 text-sm">
+                        [Feature visual: {feature.title}]
+                      </p>
+                    </div>
+                    {/* Icon overlay */}
                     <motion.div 
-                      className="w-16 h-16 bg-accent rounded-xl flex items-center justify-center mb-6"
+                      className="absolute top-4 right-4 w-12 h-12 bg-ivory/90 backdrop-blur-sm rounded-lg flex items-center justify-center shadow-lg"
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
                     >
-                      <feature.icon className="h-8 w-8 text-ivory" />
+                      <feature.icon className="h-6 w-6 text-accent" />
                     </motion.div>
-                    <h3 className="text-xl font-semibold text-charcoal mb-4 font-serif">{feature.title}</h3>
-                    <p className="text-charcoal/70">{feature.description}</p>
-                  </Card>
-                </motion.div>
+                  </div>
+                  
+                  {/* Content area */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-charcoal mb-3 font-serif">
+                      {feature.title}
+                    </h3>
+                    <p className="text-charcoal/70 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </Card>
               </motion.div>
             ))}
           </div>
@@ -290,31 +527,187 @@ export default function Home() {
       {/* How It Works Section */}
       <section id="how-it-works" className="py-20 bg-ivory">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-4xl font-bold text-charcoal mb-4 font-serif">How RISE Works</h2>
-            <p className="text-charcoal/70 text-xl">Simple steps to transform your wardrobe experience</p>
-          </div>
+            <p className="text-charcoal/70 text-xl">3 simple steps to transform your wardrobe experience</p>
+          </motion.div>
 
           <div className="grid md:grid-cols-3 gap-12">
             {steps.map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="relative mb-8">
-                  <div className="w-20 h-20 mx-auto bg-accent rounded-full flex items-center justify-center">
-                    <step.icon className="h-10 w-10 text-ivory" />
+              <motion.div 
+                key={index} 
+                className="text-center relative"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+              >
+                {/* Connecting line (hidden on mobile, visible on desktop) */}
+                {index < steps.length - 1 && (
+                  <div className="hidden md:block absolute top-10 left-[60%] w-full h-[2px] bg-gradient-to-r from-accent to-transparent -z-10" />
+                )}
+                
+                <motion.div 
+                  className="relative mb-8"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  {/* Animated background circle */}
+                  <motion.div 
+                    className="absolute inset-0 w-24 h-24 mx-auto bg-accent/20 rounded-full"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
+                  />
+                  
+                  {/* Main icon circle */}
+                  <div className="relative w-24 h-24 mx-auto bg-accent rounded-full flex items-center justify-center shadow-lg overflow-hidden">
+                    {index === 0 && (
+                      // Camera scanning animation for Build Your Closet
+                      <motion.div
+                        animate={{ 
+                          y: [0, -5, 0],
+                        }}
+                        transition={{ 
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      >
+                        <Camera className="h-12 w-12 text-ivory" />
+                        <motion.div
+                          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-10 h-1 bg-ivory/50"
+                          animate={{ 
+                            scaleX: [0, 1, 0],
+                            opacity: [0, 1, 0]
+                          }}
+                          transition={{ 
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        />
+                      </motion.div>
+                    )}
+                    {index === 1 && (
+                      // Sparkles floating animation for Get Outfit Suggestions
+                      <div className="relative">
+                        <Sparkles className="h-12 w-12 text-ivory relative z-10" />
+                        <motion.div
+                          className="absolute -top-2 -right-2"
+                          animate={{ 
+                            y: [-10, -20, -10],
+                            x: [0, 5, 0],
+                            opacity: [0, 1, 0]
+                          }}
+                          transition={{ 
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: 0
+                          }}
+                        >
+                          <Star className="h-4 w-4 text-ivory fill-ivory" />
+                        </motion.div>
+                        <motion.div
+                          className="absolute -bottom-2 -left-2"
+                          animate={{ 
+                            y: [10, 20, 10],
+                            x: [0, -5, 0],
+                            opacity: [0, 1, 0]
+                          }}
+                          transition={{ 
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: 0.5
+                          }}
+                        >
+                          <Star className="h-3 w-3 text-ivory fill-ivory" />
+                        </motion.div>
+                        <motion.div
+                          className="absolute top-0 left-0"
+                          animate={{ 
+                            y: [-5, -15, -5],
+                            opacity: [0, 1, 0]
+                          }}
+                          transition={{ 
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: 1
+                          }}
+                        >
+                          <Star className="h-3 w-3 text-ivory fill-ivory" />
+                        </motion.div>
+                      </div>
+                    )}
+                    {index === 2 && (
+                      // Growing chart animation for Track & Evolve
+                      <div className="relative w-12 h-12">
+                        <TrendingUp className="h-12 w-12 text-ivory absolute inset-0" />
+                        <motion.svg
+                          className="absolute inset-0 w-12 h-12"
+                          viewBox="0 0 48 48"
+                        >
+                          <motion.path
+                            d="M8 32 L16 24 L24 28 L40 12"
+                            fill="none"
+                            stroke="rgba(251, 244, 225, 0.5)"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: "easeInOut"
+                            }}
+                          />
+                          <motion.circle
+                            cx="40"
+                            cy="12"
+                            r="3"
+                            fill="rgba(251, 244, 225, 0.8)"
+                            initial={{ scale: 0 }}
+                            animate={{ scale: [0, 1.2, 1] }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: "easeInOut"
+                            }}
+                          />
+                        </motion.svg>
+                      </div>
+                    )}
                   </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-sand rounded-full flex items-center justify-center text-sm font-bold text-charcoal">
+                  
+                  {/* Step number */}
+                  <motion.div 
+                    className="absolute -top-2 -right-2 w-10 h-10 bg-sand rounded-full flex items-center justify-center text-sm font-bold text-charcoal shadow-md"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 200, delay: index * 0.3 }}
+                  >
                     {step.step}
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold text-charcoal mb-4 font-serif">{step.title}</h3>
-                <p className="text-charcoal/70 text-lg">{step.description}</p>
-              </div>
+                  </motion.div>
+                </motion.div>
+                
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: index * 0.3 }}
+                >
+                  <h3 className="text-2xl font-bold text-charcoal mb-4 font-serif">{step.title}</h3>
+                  <p className="text-charcoal/70 text-lg max-w-xs mx-auto">{step.description}</p>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Stats Section with Animation */}
+      {/* Benefits Section with Animation */}
       <section className="py-20 bg-gradient-to-r from-accent via-sand to-accent relative overflow-hidden">
         <motion.div 
           className="absolute inset-0 opacity-20"
@@ -350,8 +743,110 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Early Access Section */}
-      <section id="download" className="py-20 bg-gradient-to-br from-surface via-ivory to-sand relative overflow-hidden">
+      {/* Lifestyle / Social Proof Section */}
+      <section className="py-20 bg-ivory">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-charcoal mb-4 font-serif">Loved by Early Adopters</h2>
+            <p className="text-charcoal/70 text-xl">Join thousands who are already transforming their mornings</p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Lifestyle Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative rounded-2xl overflow-hidden shadow-2xl"
+            >
+              <div className="aspect-[4/5] bg-gradient-to-br from-sand/30 to-accent/20 relative">
+                {/* Placeholder for lifestyle image */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <p className="text-charcoal/30 text-center">
+                    [Lifestyle photo of someone dressed great]
+                  </p>
+                </div>
+                
+                {/* "Suggested by RISE" overlay */}
+                <motion.div
+                  className="absolute bottom-6 left-6 bg-charcoal/90 backdrop-blur-md rounded-full px-6 py-3 flex items-center gap-3"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  <Sparkles className="h-5 w-5 text-accent" />
+                  <span className="text-ivory font-semibold">Suggested by RISE</span>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Right side - Testimonials and Metrics */}
+            <div className="space-y-8">
+              {/* Testimonial quotes */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="bg-surface p-8 rounded-2xl shadow-lg border border-sand/20"
+              >
+                <div className="flex items-start gap-2 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 fill-accent text-accent" />
+                  ))}
+                </div>
+                <p className="text-charcoal/80 text-lg italic mb-4">
+                  "RISE completely changed my morning routine. I save so much time and actually feel confident in what I wear every day."
+                </p>
+                <p className="text-charcoal font-semibold">— Sarah K., Beta User</p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="bg-surface p-8 rounded-2xl shadow-lg border border-sand/20"
+              >
+                <div className="flex items-start gap-2 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 fill-accent text-accent" />
+                  ))}
+                </div>
+                <p className="text-charcoal/80 text-lg italic mb-4">
+                  "The AI suggestions are spot-on. It's like having a personal stylist who knows my closet better than I do."
+                </p>
+                <p className="text-charcoal font-semibold">— Michael R., Early Adopter</p>
+              </motion.div>
+
+              {/* Credibility metric */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-center bg-gradient-to-r from-accent to-sand rounded-2xl p-8"
+              >
+                <motion.p 
+                  className="text-5xl font-bold text-ivory mb-2 font-serif"
+                  initial={{ scale: 0.8 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 200 }}
+                >
+                  50K+
+                </motion.p>
+                <p className="text-ivory/90 text-xl font-semibold">Early Signups</p>
+                <p className="text-ivory/80 mt-2">Join the waitlist before it's too late</p>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Full-Width Waitlist Signup Section */}
+      <section id="download" className="py-24 bg-gradient-to-br from-charcoal via-charcoal/95 to-charcoal relative overflow-hidden">
         <motion.div
           className="absolute inset-0"
           initial={{ opacity: 0 }}
@@ -361,60 +856,130 @@ export default function Home() {
           <div className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-5" />
         </motion.div>
         
-        <div className="container mx-auto px-6 text-center relative z-10">
+        <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto"
           >
-            <div className="inline-flex items-center gap-2 bg-accent/20 text-accent px-4 py-2 rounded-full font-semibold mb-6">
-              <Star className="h-4 w-4 fill-accent" />
-              Limited Early Access
-              <Star className="h-4 w-4 fill-accent" />
+            {/* Headlines */}
+            <div className="text-center mb-12">
+              <h2 className="text-5xl md:text-6xl font-bold text-ivory mb-4 font-serif">
+                Be the First to Try RISE
+              </h2>
+              <p className="text-xl md:text-2xl text-ivory/80">
+                Join the waitlist today for exclusive early access and launch updates.
+              </p>
             </div>
-            
-            <h2 className="text-5xl font-bold text-charcoal mb-4 font-serif">Be Among the First</h2>
-            <p className="text-2xl text-accent font-semibold mb-2 font-serif">Smarter Mornings Start Here</p>
-            <p className="text-charcoal/70 text-xl mb-12 max-w-2xl mx-auto">
-              Join our exclusive waitlist for early access to RISE. Be part of the wardrobe revolution.
-            </p>
 
-            <motion.div 
-              className="max-w-md mx-auto mb-12"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
+            {/* Inline Signup Form */}
+            <motion.form 
+              className="bg-ivory/10 backdrop-blur-md rounded-2xl p-8 md:p-10 shadow-2xl border border-ivory/20"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              onSubmit={(e) => {
+                e.preventDefault();
+                setIsSubmitted(true);
+              }}
             >
-              <Button 
-                size="lg" 
-                className="w-full bg-accent hover:bg-accent/90 text-ivory text-xl px-8 py-6 shadow-2xl hover:shadow-3xl transition-all duration-300"
-                onClick={() => setShowWaitlist(true)}
-              >
-                <ArrowRight className="mr-2 h-6 w-6" />
-                Join the Waitlist Now
-              </Button>
-            </motion.div>
+              {!isSubmitted ? (
+                <>
+                  <div className="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                      <label htmlFor="name" className="block text-ivory/80 mb-2 font-medium">
+                        First Name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your first name"
+                        className="w-full px-5 py-4 rounded-lg bg-ivory/20 border border-ivory/30 text-ivory placeholder-ivory/50 focus:border-accent focus:bg-ivory/25 focus:outline-none transition-all"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-ivory/80 mb-2 font-medium">
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full px-5 py-4 rounded-lg bg-ivory/20 border border-ivory/30 text-ivory placeholder-ivory/50 focus:border-accent focus:bg-ivory/25 focus:outline-none transition-all"
+                        required
+                      />
+                    </div>
+                  </div>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Button 
+                      type="submit"
+                      size="lg"
+                      className="w-full bg-accent hover:bg-accent/90 text-ivory text-xl py-6 shadow-xl hover:shadow-2xl transition-all duration-300 font-semibold"
+                    >
+                      Join Now
+                      <ArrowRight className="ml-2 h-6 w-6" />
+                    </Button>
+                  </motion.div>
+
+                  {/* Incentive line */}
+                  <p className="text-center text-ivory/70 mt-6 text-lg">
+                    ✨ Early members get priority invites + insider perks
+                  </p>
+                </>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-center py-12"
+                >
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 200 }}
+                  >
+                    <CheckCircle className="h-20 w-20 text-accent mx-auto mb-6" />
+                  </motion.div>
+                  <h3 className="text-3xl font-bold text-ivory mb-3 font-serif">Welcome to the RISE Family!</h3>
+                  <p className="text-ivory/80 text-lg">
+                    You're on the list. We'll notify you as soon as RISE launches.
+                  </p>
+                  <p className="text-accent mt-4 text-lg font-semibold">
+                    Check your email for exclusive updates!
+                  </p>
+                </motion.div>
+              )}
+            </motion.form>
+
+            {/* Trust indicators */}
+            <div className="flex flex-wrap gap-6 justify-center items-center mt-10">
               <motion.div 
-                className="flex items-center gap-2 text-charcoal/70"
+                className="flex items-center gap-2 text-ivory/70"
                 whileHover={{ x: -5 }}
               >
-                <CheckCircle className="h-5 w-5 text-accent" />
-                Early bird pricing
+                <Shield className="h-5 w-5 text-accent" />
+                100% Privacy Protected
               </motion.div>
               <motion.div 
-                className="flex items-center gap-2 text-charcoal/70"
+                className="flex items-center gap-2 text-ivory/70"
+                whileHover={{ scale: 1.05 }}
+              >
+                <Zap className="h-5 w-5 text-accent" />
+                No Spam, Ever
+              </motion.div>
+              <motion.div 
+                className="flex items-center gap-2 text-ivory/70"
                 whileHover={{ x: 5 }}
               >
-                <CheckCircle className="h-5 w-5 text-accent" />
-                Exclusive features
-              </motion.div>
-              <motion.div 
-                className="flex items-center gap-2 text-charcoal/70"
-                whileHover={{ scale: 1.1 }}
-              >
-                <CheckCircle className="h-5 w-5 text-accent" />
-                Shape the future of RISE
+                <Star className="h-5 w-5 text-accent" />
+                VIP Launch Access
               </motion.div>
             </div>
           </motion.div>
@@ -422,50 +987,98 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-charcoal py-12 border-t border-charcoal/10">
+      <footer className="bg-charcoal py-16">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-accent rounded-lg"></div>
-                <span className="text-xl font-bold text-ivory font-serif">RISE</span>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            {/* Logo and Description */}
+            <div className="lg:col-span-2">
+              <div className="flex items-center space-x-3 mb-6">
+                <img 
+                  src="/images/icon.png"
+                  alt="RISE Logo"
+                  className="w-10 h-10 object-contain"
+                />
+                <span className="text-2xl font-bold text-ivory font-serif">RISE</span>
               </div>
-              <p className="text-ivory/70">Your AI-powered wardrobe assistant for smarter dressing every day.</p>
-            </div>
-
-            <div>
-              <h4 className="text-ivory font-semibold mb-4 font-serif">Features</h4>
-              <ul className="space-y-2 text-ivory/70">
-                <li>Smart Organization</li>
-                <li>Weather Suggestions</li>
-                <li>Outfit Tracking</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-ivory font-semibold mb-4 font-serif">Company</h4>
-              <ul className="space-y-2 text-ivory/70">
-                <li>About Us</li>
-                <li>Privacy Policy</li>
-                <li>Terms of Service</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-ivory font-semibold mb-4 font-serif">Connect</h4>
+              <p className="text-ivory/70 mb-6 max-w-md">
+                Your closet's new brain. Get personalized outfit suggestions based on weather, occasions, and your style.
+              </p>
+              {/* Social Links */}
               <div className="flex space-x-4">
-                <Button size="sm" variant="ghost" className="text-ivory/70 hover:text-ivory">
+                <motion.a
+                  href="#"
+                  className="w-10 h-10 bg-ivory/10 rounded-full flex items-center justify-center text-ivory/70 hover:bg-accent hover:text-ivory transition-all duration-300"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   <FaTwitter className="h-5 w-5" />
-                </Button>
-                <Button size="sm" variant="ghost" className="text-ivory/70 hover:text-ivory">
+                </motion.a>
+                <motion.a
+                  href="#"
+                  className="w-10 h-10 bg-ivory/10 rounded-full flex items-center justify-center text-ivory/70 hover:bg-accent hover:text-ivory transition-all duration-300"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   <FaInstagram className="h-5 w-5" />
-                </Button>
+                </motion.a>
               </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-ivory font-semibold mb-4 text-lg">Quick Links</h4>
+              <ul className="space-y-3">
+                <li>
+                  <a href="#features" className="text-ivory/70 hover:text-accent transition-colors">
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a href="#how-it-works" className="text-ivory/70 hover:text-accent transition-colors">
+                    How It Works
+                  </a>
+                </li>
+                <li>
+                  <a href="#download" className="text-ivory/70 hover:text-accent transition-colors">
+                    Join Waitlist
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <h4 className="text-ivory font-semibold mb-4 text-lg">Legal</h4>
+              <ul className="space-y-3">
+                <li>
+                  <a href="#" className="text-ivory/70 hover:text-accent transition-colors">
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-ivory/70 hover:text-accent transition-colors">
+                    Terms of Service
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-ivory/70 hover:text-accent transition-colors">
+                    Cookie Policy
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
 
-          <div className="border-t border-ivory/20 mt-8 pt-8 text-center text-ivory/70">
-            <p>&copy; 2024 RISE. All rights reserved.</p>
+          {/* Bottom Bar */}
+          <div className="border-t border-ivory/20 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-ivory/60 text-sm">
+                &copy; 2024 RISE. All rights reserved.
+              </p>
+              <p className="text-ivory/60 text-sm">
+                Made with ❤️ for smarter mornings
+              </p>
+            </div>
           </div>
         </div>
       </footer>
