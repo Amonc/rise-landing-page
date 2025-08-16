@@ -4,9 +4,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
+import Image from "next/image";
 import {
   Shirt,
-  Cloud,
   Calendar,
   Camera,
   Sparkles,
@@ -184,7 +184,7 @@ export default function Home() {
                 Smarter Mornings Start Here
               </motion.div>
               <h1 className="text-4xl md:text-6xl font-bold text-charcoal mb-6 font-serif">
-                Your Closet's
+                Your Closet&apos;s
                 <span className="text-accent block"> New Brain</span>
               </h1>
               <p className="text-xl text-charcoal/70 mb-8 max-w-4xl">
@@ -478,7 +478,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <motion.div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-charcoal mb-4 font-serif">Core Features</h2>
-            <p className="text-charcoal/70 text-xl">Visual blocks showcasing RISE's powerful capabilities</p>
+            <p className="text-charcoal/70 text-xl">Visual blocks showcasing RISE&apos;s powerful capabilities</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -800,7 +800,7 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-charcoal/80 text-lg italic mb-4">
-                  "RISE completely changed my morning routine. I save so much time and actually feel confident in what I wear every day."
+                  &quot;RISE completely changed my morning routine. I save so much time and actually feel confident in what I wear every day.&quot;
                 </p>
                 <p className="text-charcoal font-semibold">— Sarah K., Beta User</p>
               </motion.div>
@@ -817,7 +817,7 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-charcoal/80 text-lg italic mb-4">
-                  "The AI suggestions are spot-on. It's like having a personal stylist who knows my closet better than I do."
+                  &quot;The AI suggestions are spot-on. It&apos;s like having a personal stylist who knows my closet better than I do.&quot;
                 </p>
                 <p className="text-charcoal font-semibold">— Michael R., Early Adopter</p>
               </motion.div>
@@ -838,7 +838,7 @@ export default function Home() {
                   50K+
                 </motion.p>
                 <p className="text-ivory/90 text-xl font-semibold">Early Signups</p>
-                <p className="text-ivory/80 mt-2">Join the waitlist before it's too late</p>
+                <p className="text-ivory/80 mt-2">Join the waitlist before it&apos;s too late</p>
               </motion.div>
             </div>
           </div>
@@ -949,7 +949,7 @@ export default function Home() {
                   </motion.div>
                   <h3 className="text-3xl font-bold text-ivory mb-3 font-serif">Welcome to the RISE Family!</h3>
                   <p className="text-ivory/80 text-lg">
-                    You're on the list. We'll notify you as soon as RISE launches.
+                    You&apos;re on the list. We&apos;ll notify you as soon as RISE launches.
                   </p>
                   <p className="text-accent mt-4 text-lg font-semibold">
                     Check your email for exclusive updates!
@@ -993,15 +993,17 @@ export default function Home() {
             {/* Logo and Description */}
             <div className="lg:col-span-2">
               <div className="flex items-center space-x-3 mb-6">
-                <img 
+                <Image 
                   src="/images/icon.png"
                   alt="RISE Logo"
                   className="w-10 h-10 object-contain"
+                  width={40}
+                  height={40}
                 />
                 <span className="text-2xl font-bold text-ivory font-serif">RISE</span>
               </div>
               <p className="text-ivory/70 mb-6 max-w-md">
-                Your closet's new brain. Get personalized outfit suggestions based on weather, occasions, and your style.
+                Your closet&apos;s new brain. Get personalized outfit suggestions based on weather, occasions, and your style.
               </p>
               {/* Social Links */}
               <div className="flex space-x-4">
