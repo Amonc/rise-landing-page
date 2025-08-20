@@ -221,15 +221,82 @@ export default function Home() {
               transition={{ duration: 1, delay: 0.3 }}
               className="relative flex justify-center lg:justify-end"
             >
-              <motion.img 
-                src="/images/mockup-portrait.png" 
-                alt="RISE App Interface"
-                className="w-full max-w-48 lg:max-w-56 xl:max-w-64 relative z-10 drop-shadow-2xl"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              />
-              {/* Decorative background accent */}
-              <div className="absolute inset-0 bg-accent/10 blur-3xl rounded-full scale-150 -z-10" />
+              {/* Mockup container with exact dimensions */}
+              <div className="relative w-48 lg:w-56 xl:w-64">
+                <motion.img 
+                  src="/images/mockup-portrait.png" 
+                  alt="RISE App Interface"
+                  className="w-full relative z-10 drop-shadow-2xl"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                />
+                
+                {/* Floating outfit items positioned relative to mockup container */}
+                {/* Shirt 1 - Top left */}
+                <motion.img
+                  src="/images/outfits/shirt1.png"
+                  alt="Shirt"
+                  className="absolute top-[5%] left-[-30%] w-[45%] h-auto object-contain z-20"
+                  initial={{ opacity: 0, scale: 0, rotate: -15 }}
+                  animate={{ 
+                    opacity: 1, 
+                    scale: 1,
+                    y: [0, -10, 0],
+                    rotate: [-15, -10, -15]
+                  }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 0.8 },
+                    scale: { duration: 0.5, delay: 0.8 },
+                    y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+                    rotate: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                  }}
+                />
+                
+                {/* Jeans - Bottom right */}
+                <motion.img
+                  src="/images/outfits/jeans.png"
+                  alt="Jeans"
+                  className="absolute bottom-[2%] right-[-25%] w-[55%] h-auto object-contain z-20"
+                  initial={{ opacity: 0, scale: 0, rotate: 12 }}
+                  animate={{ 
+                    opacity: 1, 
+                    scale: 1,
+                    y: [0, 15, 0],
+                    rotate: [12, 8, 12]
+                  }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 1 },
+                    scale: { duration: 0.5, delay: 1 },
+                    y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                    rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                  }}
+                />
+                
+                {/* Shirt 2 - Top right */}
+                <motion.img
+                  src="/images/outfits/shirt2.png"
+                  alt="Shirt"
+                  className="absolute top-[20%] right-[-28%] w-[40%] h-auto object-contain z-20"
+                  initial={{ opacity: 0, scale: 0, rotate: 20 }}
+                  animate={{ 
+                    opacity: 1, 
+                    scale: 1,
+                    y: [0, -8, 0],
+                    x: [0, 5, 0],
+                    rotate: [20, 25, 20]
+                  }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 1.2 },
+                    scale: { duration: 0.5, delay: 1.2 },
+                    y: { duration: 3.5, repeat: Infinity, ease: "easeInOut" },
+                    x: { duration: 3.5, repeat: Infinity, ease: "easeInOut" },
+                    rotate: { duration: 3.5, repeat: Infinity, ease: "easeInOut" }
+                  }}
+                />
+                
+                {/* Decorative background accent */}
+                <div className="absolute inset-0 bg-accent/10 blur-3xl rounded-full scale-150 -z-10" />
+              </div>
             </motion.div>
           </div>
         </div>
@@ -762,15 +829,18 @@ export default function Home() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl"
+              className="relative"
             >
-              <div className="aspect-[4/5] bg-gradient-to-br from-sand/30 to-accent/20 relative">
-                {/* Placeholder for lifestyle image */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <p className="text-charcoal/30 text-center">
-                    [Lifestyle photo of someone dressed great]
-                  </p>
-                </div>
+              <div className="relative w-full max-w-xl mx-auto">
+                <Image
+                  src="/images/outfits-hanger.png"
+                  alt="Stylish outfits on hangers curated by RISE - showcasing perfectly coordinated looks"
+                  width={600}
+                  height={750}
+                  className="w-full h-auto object-contain"
+                  sizes="(max-width: 768px) 100vw, 600px"
+                  priority
+                />
                 
                 {/* "Suggested by RISE" overlay */}
                 <motion.div
@@ -842,6 +912,55 @@ export default function Home() {
               </motion.div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Social Proof / Waitlist CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-sand/20 to-surface">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            {/* Main CTA */}
+            <motion.div
+              initial={{ scale: 0.9 }}
+              whileInView={{ scale: 1 }}
+              transition={{ type: "spring", stiffness: 200 }}
+            >
+              <Button 
+                size="lg" 
+                className="bg-accent hover:bg-accent/90 text-ivory text-xl px-12 py-8 shadow-2xl hover:shadow-3xl transition-all duration-300 font-semibold mb-6"
+                onClick={() => setShowWaitlist(true)}
+              >
+                <Sparkles className="mr-3 h-6 w-6" />
+                Join the Waitlist
+                <ArrowRight className="ml-3 h-6 w-6" />
+              </Button>
+            </motion.div>
+
+            {/* Social Proof Line */}
+            <motion.p 
+              className="text-2xl text-charcoal/80 font-semibold mb-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              Join <span className="text-accent font-bold">2K+</span> already on the waitlist
+            </motion.p>
+
+            {/* Supporting Line */}
+            <motion.p 
+              className="text-lg text-charcoal/60"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              Launching soon on iOS
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
