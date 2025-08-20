@@ -275,7 +275,7 @@ export default function Home() {
                         cy="48"
                         r="36"
                         fill="none"
-                        stroke="#9A917A"
+                        stroke="#E44646"
                         strokeWidth="8"
                         strokeDasharray={`${(17/60) * 226} 226`}
                         initial={{ strokeDashoffset: 226 }}
@@ -284,12 +284,12 @@ export default function Home() {
                       />
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <Clock className="h-8 w-8 text-accent" />
+                      <Clock className="h-8 w-8 text-error" />
                     </div>
                   </div>
                   <div className="flex-1">
                     <motion.p 
-                      className="text-5xl font-bold text-accent mb-3 font-serif"
+                      className="text-5xl font-bold text-error mb-3 font-serif"
                       initial={{ scale: 0.8 }}
                       whileInView={{ scale: 1 }}
                       transition={{ type: "spring", stiffness: 200 }}
@@ -297,13 +297,13 @@ export default function Home() {
                       17
                     </motion.p>
                     <p className="text-charcoal/80 text-xl leading-relaxed">
-                      minutes wasted every morning deciding what to wear
+                      minutes wasted every morning, deciding what to wear
                     </p>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Unworn clothes stat */}
+              {/* Wardrobe actually worn stat */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -328,14 +328,14 @@ export default function Home() {
                         fill="none"
                         stroke="#E44646"
                         strokeWidth="8"
-                        strokeDasharray={`${0.62 * 226} 226`}
+                        strokeDasharray={`${0.2 * 226} 226`}
                         initial={{ strokeDashoffset: 226 }}
                         whileInView={{ strokeDashoffset: 0 }}
                         transition={{ duration: 1.5, ease: "easeOut" }}
                       />
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <Shirt className="h-8 w-8 text-accent" />
+                      <Shirt className="h-8 w-8 text-error" />
                     </div>
                   </div>
                   <div className="flex-1">
@@ -345,16 +345,16 @@ export default function Home() {
                       whileInView={{ scale: 1 }}
                       transition={{ type: "spring", stiffness: 200 }}
                     >
-                      62%
+                      20%
                     </motion.p>
                     <p className="text-charcoal/80 text-xl leading-relaxed">
-                      of your closet goes unworn, taking up valuable space
+                      of wardrobe is actually worn - money wasted on the rest
                     </p>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Wardrobe rotation stat */}
+              {/* Money spent on clothes stat */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -377,29 +377,29 @@ export default function Home() {
                         cy="48"
                         r="36"
                         fill="none"
-                        stroke="#CEC5AB"
+                        stroke="#E44646"
                         strokeWidth="8"
-                        strokeDasharray={`${0.2 * 226} 226`}
+                        strokeDasharray={`${(1800/2000) * 226} 226`}
                         initial={{ strokeDashoffset: 226 }}
                         whileInView={{ strokeDashoffset: 0 }}
                         transition={{ duration: 1.5, ease: "easeOut" }}
                       />
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <TrendingUp className="h-8 w-8 text-accent" />
+                      <TrendingUp className="h-8 w-8 text-error" />
                     </div>
                   </div>
                   <div className="flex-1">
                     <motion.p 
-                      className="text-5xl font-bold text-sand mb-3 font-serif"
+                      className="text-5xl font-bold text-error mb-3 font-serif"
                       initial={{ scale: 0.8 }}
                       whileInView={{ scale: 1 }}
                       transition={{ type: "spring", stiffness: 200 }}
                     >
-                      20%
+                      $1,800
                     </motion.p>
                     <p className="text-charcoal/80 text-xl leading-relaxed">
-                      of wardrobe actually worn — money wasted on the rest
+                      The average person spends ~$1,800 a year on new clothes — and still feels like they have nothing to wear
                     </p>
                   </div>
                 </div>
