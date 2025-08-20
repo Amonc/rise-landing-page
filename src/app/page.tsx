@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
@@ -15,7 +15,6 @@ import {
   Clock,
   Zap,
   Shield,
-  X,
   CheckCircle,
   ArrowRight,
   Star,
@@ -23,7 +22,6 @@ import {
 import { FaTwitter, FaInstagram } from "react-icons/fa";
 
 export default function Home() {
-  const [showWaitlist, setShowWaitlist] = useState(false);
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -125,16 +123,16 @@ export default function Home() {
     <div className="min-h-screen bg-ivory text-charcoal">
       {/* Navigation Header */}
       <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-ivory/80 border-b border-sand/30">
-        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
+        <nav className="container mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
           <motion.div 
-            className="flex items-center space-x-3"
+            className="flex items-center space-x-2 sm:space-x-3"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400 }}
           >
             <motion.img 
               src="/images/icon.png"
               alt="RISE Logo"
-              className="w-10 h-10 object-contain"
+              className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
               initial={{ scale: 0, rotate: 0 }}
               animate={{ scale: 1, rotate: 360 }}
               transition={{ 
@@ -142,7 +140,7 @@ export default function Home() {
                 rotate: { duration: 0.8, ease: "easeOut" }
               }}
             />
-            <span className="text-2xl font-bold text-charcoal font-serif">RISE</span>
+            <span className="text-xl sm:text-2xl font-bold text-charcoal font-serif">RISE</span>
           </motion.div>
           <div className="hidden md:flex space-x-8">
             <a href="#features" className="text-charcoal/70 hover:text-charcoal transition-colors">
@@ -156,8 +154,8 @@ export default function Home() {
             </a>
           </div>
           <Button 
-            className="bg-accent hover:bg-accent/90 text-ivory shadow-lg hover:shadow-xl transition-all duration-300"
-            onClick={() => setShowWaitlist(true)}
+            className="bg-accent hover:bg-accent/90 text-ivory shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-2.5"
+            onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Join Waitlist
           </Button>
@@ -166,46 +164,46 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center bg-gradient-to-br from-sand via-surface to-ivory pt-20 relative overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left side - Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-left"
+              className="text-center lg:text-left"
             >
               <motion.div
-                className="text-accent font-semibold text-2xl md:text-3xl mb-4 font-serif"
+                className="text-accent font-semibold text-xl md:text-2xl lg:text-3xl mb-3 md:mb-4 font-serif"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 Smarter Mornings Start Here
               </motion.div>
-              <h1 className="text-4xl md:text-6xl font-bold text-charcoal mb-6 font-serif">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-charcoal mb-4 md:mb-6 font-serif leading-tight">
                 Your Closet&apos;s
                 <span className="text-accent block"> New Brain</span>
               </h1>
-              <p className="text-xl text-charcoal/70 mb-8 max-w-4xl">
+              <p className="text-base sm:text-lg md:text-xl text-charcoal/70 mb-6 md:mb-8 max-w-4xl leading-relaxed mx-auto lg:mx-0">
                 The only wardrobe app that truly understands your style. Organize, track, and get personalized outfit suggestions powered by cutting-edge AI.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-auto">
                   <Button 
                     size="lg" 
-                    className="bg-accent hover:bg-accent/90 text-ivory text-lg px-8 py-6 shadow-xl hover:shadow-2xl transition-all duration-300"
-                    onClick={() => setShowWaitlist(true)}
+                    className="bg-accent hover:bg-accent/90 text-ivory text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 shadow-xl hover:shadow-2xl transition-all duration-300"
+                    onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}
                   >
-                    <Sparkles className="mr-2 h-5 w-5" />
+                    <Sparkles className="mr-2 h-4 sm:h-5 w-4 sm:w-5" />
                     Join the Waitlist
                   </Button>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-auto">
                   <Button 
                     size="lg" 
                     variant="outline"
-                    className="border-2 border-accent text-accent hover:bg-accent hover:text-ivory text-lg px-8 py-6 transition-all duration-300"
+                    className="border-2 border-accent text-accent hover:bg-accent hover:text-ivory text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 transition-all duration-300"
                     onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
                   >
                     Watch RISE in Action
@@ -219,10 +217,10 @@ export default function Home() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="relative flex justify-center lg:justify-end"
+              className="relative flex justify-center lg:justify-end mt-8 sm:mt-12 lg:mt-0"
             >
               {/* Mockup container with exact dimensions */}
-              <div className="relative w-48 lg:w-56 xl:w-64">
+              <div className="relative w-64 sm:w-72 md:w-64 lg:w-56 xl:w-64">
                 <motion.img 
                   src="/images/mockup-portrait.png" 
                   alt="RISE App Interface"
@@ -236,7 +234,7 @@ export default function Home() {
                 <motion.img
                   src="/images/outfits/shirt1.png"
                   alt="Shirt"
-                  className="absolute top-[5%] left-[-30%] w-[45%] h-auto object-contain z-20"
+                  className="absolute top-[5%] left-[-25%] sm:left-[-30%] w-[40%] sm:w-[45%] h-auto object-contain z-20"
                   initial={{ opacity: 0, scale: 0, rotate: -15 }}
                   animate={{ 
                     opacity: 1, 
@@ -256,7 +254,7 @@ export default function Home() {
                 <motion.img
                   src="/images/outfits/jeans.png"
                   alt="Jeans"
-                  className="absolute bottom-[2%] right-[-25%] w-[55%] h-auto object-contain z-20"
+                  className="absolute bottom-[2%] right-[-20%] sm:right-[-25%] w-[50%] sm:w-[55%] h-auto object-contain z-20"
                   initial={{ opacity: 0, scale: 0, rotate: 12 }}
                   animate={{ 
                     opacity: 1, 
@@ -276,7 +274,7 @@ export default function Home() {
                 <motion.img
                   src="/images/outfits/shirt2.png"
                   alt="Shirt"
-                  className="absolute top-[20%] right-[-28%] w-[40%] h-auto object-contain z-20"
+                  className="absolute top-[20%] right-[-23%] sm:right-[-28%] w-[35%] sm:w-[40%] h-auto object-contain z-20"
                   initial={{ opacity: 0, scale: 0, rotate: 20 }}
                   animate={{ 
                     opacity: 1, 
@@ -303,15 +301,15 @@ export default function Home() {
       </section>
 
       {/* Pain Points & Stats Section */}
-      <section className="py-20 bg-surface">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-20 bg-surface">
+        <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-16 font-serif">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-charcoal mb-8 sm:mb-12 md:mb-16 font-serif leading-tight">
               Why Your Mornings Feel Harder Than They Should
             </h2>
           </motion.div>
@@ -356,7 +354,7 @@ export default function Home() {
                   </div>
                   <div className="flex-1">
                     <motion.p 
-                      className="text-5xl font-bold text-error mb-3 font-serif"
+                      className="text-4xl sm:text-5xl font-bold text-error mb-2 sm:mb-3 font-serif"
                       initial={{ scale: 0.8 }}
                       whileInView={{ scale: 1 }}
                       transition={{ type: "spring", stiffness: 200 }}
@@ -407,7 +405,7 @@ export default function Home() {
                   </div>
                   <div className="flex-1">
                     <motion.p 
-                      className="text-5xl font-bold text-error mb-3 font-serif"
+                      className="text-4xl sm:text-5xl font-bold text-error mb-2 sm:mb-3 font-serif"
                       initial={{ scale: 0.8 }}
                       whileInView={{ scale: 1 }}
                       transition={{ type: "spring", stiffness: 200 }}
@@ -458,7 +456,7 @@ export default function Home() {
                   </div>
                   <div className="flex-1">
                     <motion.p 
-                      className="text-5xl font-bold text-error mb-3 font-serif"
+                      className="text-4xl sm:text-5xl font-bold text-error mb-2 sm:mb-3 font-serif"
                       initial={{ scale: 0.8 }}
                       whileInView={{ scale: 1 }}
                       transition={{ type: "spring", stiffness: 200 }}
@@ -473,17 +471,24 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Right side - Visual placeholder for image */}
+            {/* Right side - Split screen visual */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="bg-gradient-to-br from-sand/30 to-accent/20 rounded-2xl p-8 h-[500px] flex items-center justify-center">
-                <p className="text-charcoal/50 text-center">
-                  [Split-screen visual: chaotic closet vs. RISE app]
-                </p>
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                <Image
+                  src="/images/split-sad-person.jpeg"
+                  alt="Split screen showing the struggle of choosing outfits vs organized wardrobe with RISE"
+                  width={600}
+                  height={500}
+                  className="w-full h-auto object-cover"
+                  sizes="(max-width: 768px) 100vw, 600px"
+                />
+                {/* Overlay gradient for better text visibility if needed */}
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 to-transparent pointer-events-none" />
               </div>
             </motion.div>
           </div>
@@ -495,7 +500,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-center mt-16"
           >
-            <p className="text-2xl md:text-3xl font-semibold text-accent font-serif">
+            <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-accent font-serif text-center leading-relaxed">
               RISE fixes this in seconds — turning your closet into a smart, personal stylist.
             </p>
           </motion.div>
@@ -797,13 +802,13 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: index * 0.1, type: "spring" }}
               >
                 <motion.div 
-                  className="text-4xl font-bold text-ivory mb-2 font-serif"
+                  className="text-3xl sm:text-4xl font-bold text-ivory mb-1 sm:mb-2 font-serif"
                   whileHover={{ scale: 1.2 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   {stat.number}
                 </motion.div>
-                <div className="text-ivory/90 text-lg">{stat.label}</div>
+                <div className="text-ivory/90 text-base sm:text-lg">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -900,14 +905,14 @@ export default function Home() {
                 className="text-center bg-gradient-to-r from-accent to-sand rounded-2xl p-8"
               >
                 <motion.p 
-                  className="text-5xl font-bold text-ivory mb-2 font-serif"
+                  className="text-4xl sm:text-5xl font-bold text-ivory mb-2 font-serif"
                   initial={{ scale: 0.8 }}
                   whileInView={{ scale: 1 }}
                   transition={{ type: "spring", stiffness: 200 }}
                 >
                   50K+
                 </motion.p>
-                <p className="text-ivory/90 text-xl font-semibold">Early Signups</p>
+                <p className="text-ivory/90 text-lg sm:text-xl font-semibold">Early Signups</p>
                 <p className="text-ivory/80 mt-2">Join the waitlist before it&apos;s too late</p>
               </motion.div>
             </div>
@@ -933,7 +938,7 @@ export default function Home() {
               <Button 
                 size="lg" 
                 className="bg-accent hover:bg-accent/90 text-ivory text-xl px-12 py-8 shadow-2xl hover:shadow-3xl transition-all duration-300 font-semibold mb-6"
-                onClick={() => setShowWaitlist(true)}
+                onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <Sparkles className="mr-3 h-6 w-6" />
                 Join the Waitlist
@@ -975,7 +980,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-5" />
         </motion.div>
         
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1204,88 +1209,6 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* Waitlist Modal */}
-      <AnimatePresence>
-        {showWaitlist && (
-          <motion.div
-            className="fixed inset-0 bg-charcoal/80 backdrop-blur-md z-50 flex items-center justify-center p-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setShowWaitlist(false)}
-          >
-            <motion.div
-              className="bg-ivory rounded-2xl p-8 max-w-md w-full shadow-2xl"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-2xl font-bold text-charcoal font-serif">Join the RISE Waitlist</h3>
-                <button
-                  onClick={() => setShowWaitlist(false)}
-                  className="text-charcoal/50 hover:text-charcoal transition-colors"
-                >
-                  <X className="h-6 w-6" />
-                </button>
-              </div>
-
-              {!isSubmitted ? (
-                <>
-                  <p className="text-charcoal/70 mb-6">
-                    Be among the first to experience the future of wardrobe management. 
-                    Get exclusive early access and special pricing.
-                  </p>
-                  
-                  <form onSubmit={(e) => {
-                    e.preventDefault();
-                    setIsSubmitted(true);
-                  }}>
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 rounded-lg border border-sand/30 focus:border-accent focus:outline-none mb-4"
-                      required
-                    />
-                    
-                    <Button 
-                      type="submit"
-                      className="w-full bg-accent hover:bg-accent/90 text-ivory"
-                    >
-                      Join Waitlist
-                    </Button>
-                  </form>
-                  
-                  <p className="text-sm text-charcoal/50 mt-4 text-center">
-                    We respect your privacy. No spam, ever.
-                  </p>
-                </>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-center py-8"
-                >
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 200 }}
-                  >
-                    <CheckCircle className="h-16 w-16 text-accent mx-auto mb-4" />
-                  </motion.div>
-                  <h4 className="text-2xl font-bold text-charcoal mb-2 font-serif">You&apos;re on the list!</h4>
-                  <p className="text-charcoal/70">
-                    We&apos;ll notify you as soon as RISE is ready for you.
-                  </p>
-                </motion.div>
-              )}
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
