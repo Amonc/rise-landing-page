@@ -30,37 +30,37 @@ export default function Home() {
       icon: Camera,
       title: "Barcode Scanning",
       description: "Just scan the tag — RISE instantly adds it with brand, color, and style.",
-      image: "/images/barcode-scanning.png", // placeholder for later
+      image: "/images/core-features/barcode-scan.png",
     },
     {
       icon: Zap,
       title: "Receipt Importing",
       description: "Upload receipts or email confirmations — your new items appear in your closet automatically.",
-      image: "/images/receipt-importing.gif", // placeholder for later
+      image: "/images/core-features/receipt-import.png",
     },
     {
       icon: Sparkles,
       title: "AI Outfit Suggestions",
       description: "Get full outfits based on weather, occasion, and your style.",
-      image: "/images/ai-suggestions.png", // placeholder for later
+      image: "/images/core-features/weather-match.png",
     },
     {
       icon: Shield,
       title: "Closet Type Onboarding",
       description: "Choose Masculine or Feminine closet, answer a quick survey, and start organized instantly.",
-      image: "/images/onboarding.png", // placeholder for later
+      image: "/images/core-features/masculine-feminine.png",
     },
     {
       icon: TrendingUp,
       title: "Color-Smart Styling",
       description: "RISE only suggests outfits that work together — no clashing colors, no bad fits.",
-      image: "/images/color-smart.png", // placeholder for later
+      image: "/images/core-features/color-match.png",
     },
     {
       icon: Calendar,
       title: "Worn Tracker",
       description: "Keep track of what you've worn, so you never repeat too soon.",
-      image: "/images/worn-tracker.png", // placeholder for later
+      image: "/images/core-features/worn-tracker.png",
     },
   ];
 
@@ -562,14 +562,23 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="relative group"
               >
-                <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 border-sand/20 hover:border-accent/30 h-full">
-                  {/* Image placeholder area */}
-                  <div className="relative h-48 bg-gradient-to-br from-sand/20 to-accent/10 overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <p className="text-charcoal/30 text-sm">
-                        [Feature visual: {feature.title}]
-                      </p>
-                    </div>
+                <motion.div
+                  whileHover={{ y: -10, scale: 1.0 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="scale-95"
+                >
+                  <div className="overflow-hidden hover:shadow-2xl transition-all duration-300 rounded-lg h-full">
+                  {/* Square image with text overlay */}
+                  <div className="relative aspect-square">
+                    <Image
+                      src={feature.image}
+                      alt={feature.title}
+                      width={400}
+                      height={400}
+                      className="w-full h-full object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    
                     {/* Icon overlay */}
                     <motion.div 
                       className="absolute top-4 right-4 w-12 h-12 bg-ivory/90 backdrop-blur-sm rounded-lg flex items-center justify-center shadow-lg"
@@ -578,18 +587,19 @@ export default function Home() {
                     >
                       <feature.icon className="h-6 w-6 text-accent" />
                     </motion.div>
+                    
+                    {/* Text overlay at bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/90 via-charcoal/80 to-transparent p-6 pt-12">
+                      <h3 className="text-xl font-bold text-ivory mb-2 font-serif">
+                        {feature.title}
+                      </h3>
+                      <p className="text-ivory/90 text-sm leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
-                  
-                  {/* Content area */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-charcoal mb-3 font-serif">
-                      {feature.title}
-                    </h3>
-                    <p className="text-charcoal/70 leading-relaxed">
-                      {feature.description}
-                    </p>
                   </div>
-                </Card>
+                </motion.div>
               </motion.div>
             ))}
           </div>
