@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-[#FBF4E1] text-[#3A3E38]">
@@ -17,7 +19,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">2. Service Description</h2>
             <p className="text-lg">
-              RISE is an AI-powered wardrobe assistant that helps you organize your clothing, create outfits, and receive personalized style recommendations. The service is provided "as is" and we reserve the right to modify or discontinue features at any time.
+              RISE is an AI-powered wardrobe assistant that helps you organize your clothing, create outfits, and receive personalized style recommendations. The service is provided &quot;as is&quot; and we reserve the right to modify or discontinue features at any time.
             </p>
           </section>
 
@@ -88,9 +90,9 @@ export default function TermsPage() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-[#CEC5AB]">
-          <a href="/" className="text-[#9A917A] hover:text-[#3A3E38] transition-colors">
+          <Link href="/" className="text-[#9A917A] hover:text-[#3A3E38] transition-colors">
             ← Back to Home
-          </a>
+          </Link>
         </div>
       </div>
     </div>
