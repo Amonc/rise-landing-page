@@ -229,69 +229,6 @@ export default function Home() {
                   transition={{ type: "spring", stiffness: 300 }}
                 />
                 
-                {/* Floating outfit items positioned relative to mockup container */}
-                {/* Shirt 1 - Top left */}
-                <motion.img
-                  src="/images/outfits/shirt1.png"
-                  alt="Shirt"
-                  className="absolute top-[5%] left-[-25%] sm:left-[-30%] w-[40%] sm:w-[45%] h-auto object-contain z-20"
-                  initial={{ opacity: 0, scale: 0, rotate: -15 }}
-                  animate={{ 
-                    opacity: 1, 
-                    scale: 1,
-                    y: [0, -10, 0],
-                    rotate: [-15, -10, -15]
-                  }}
-                  transition={{
-                    opacity: { duration: 0.5, delay: 0.8 },
-                    scale: { duration: 0.5, delay: 0.8 },
-                    y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-                    rotate: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-                  }}
-                />
-                
-                {/* Jeans - Bottom right */}
-                <motion.img
-                  src="/images/outfits/jeans.png"
-                  alt="Jeans"
-                  className="absolute bottom-[2%] right-[-20%] sm:right-[-25%] w-[50%] sm:w-[55%] h-auto object-contain z-20"
-                  initial={{ opacity: 0, scale: 0, rotate: 12 }}
-                  animate={{ 
-                    opacity: 1, 
-                    scale: 1,
-                    y: [0, 15, 0],
-                    rotate: [12, 8, 12]
-                  }}
-                  transition={{
-                    opacity: { duration: 0.5, delay: 1 },
-                    scale: { duration: 0.5, delay: 1 },
-                    y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-                    rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-                  }}
-                />
-                
-                {/* Shirt 2 - Top right */}
-                <motion.img
-                  src="/images/outfits/shirt2.png"
-                  alt="Shirt"
-                  className="absolute top-[20%] right-[-23%] sm:right-[-28%] w-[35%] sm:w-[40%] h-auto object-contain z-20"
-                  initial={{ opacity: 0, scale: 0, rotate: 20 }}
-                  animate={{ 
-                    opacity: 1, 
-                    scale: 1,
-                    y: [0, -8, 0],
-                    x: [0, 5, 0],
-                    rotate: [20, 25, 20]
-                  }}
-                  transition={{
-                    opacity: { duration: 0.5, delay: 1.2 },
-                    scale: { duration: 0.5, delay: 1.2 },
-                    y: { duration: 3.5, repeat: Infinity, ease: "easeInOut" },
-                    x: { duration: 3.5, repeat: Infinity, ease: "easeInOut" },
-                    rotate: { duration: 3.5, repeat: Infinity, ease: "easeInOut" }
-                  }}
-                />
-                
                 {/* Decorative background accent */}
                 <div className="absolute inset-0 bg-accent/10 blur-3xl rounded-full scale-150 -z-10" />
               </div>
@@ -507,44 +444,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Key Differentiators Section */}
-      <section className="py-20 bg-gradient-to-br from-charcoal to-charcoal/95">
-        <div className="container mx-auto px-6">
-          <motion.div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-ivory mb-4 font-serif">Why RISE is Unlike Any Other Wardrobe App</h2>
-            <p className="text-ivory/80 text-xl">No other wardrobe app comes close</p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {differentiators.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative group"
-              >
-                <motion.div 
-                  className="bg-ivory/10 backdrop-blur-sm border border-ivory/20 rounded-2xl p-8 hover:bg-ivory/15 transition-all duration-300 h-full"
-                  whileHover={{ scale: 1.02, y: -5 }}
-                >
-                  <div className="flex items-start gap-6 h-full">
-                    <div className="w-16 h-16 bg-accent rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                      <item.icon className="h-8 w-8 text-ivory" />
-                    </div>
-                    <div className="flex-1">
-                      <span className="text-accent font-bold text-sm">{item.highlight}</span>
-                      <h3 className="text-2xl font-bold text-ivory mb-3 font-serif">{item.title}</h3>
-                      <p className="text-ivory/80 leading-relaxed">{item.description}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Features Section */}
       <section id="features" className="py-20 bg-surface">
         <div className="container mx-auto px-6">
@@ -598,6 +497,43 @@ export default function Home() {
                       </p>
                     </div>
                   </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Key Differentiators Section */}
+      <section className="py-20 bg-gradient-to-br from-charcoal to-charcoal/95">
+        <div className="container mx-auto px-6">
+          <motion.div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-ivory mb-4 font-serif">Why RISE is Different</h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {differentiators.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="relative group"
+              >
+                <motion.div 
+                  className="bg-ivory/10 backdrop-blur-sm border border-ivory/20 rounded-2xl p-8 hover:bg-ivory/15 transition-all duration-300 h-full"
+                  whileHover={{ scale: 1.02, y: -5 }}
+                >
+                  <div className="flex items-start gap-6 h-full">
+                    <div className="w-16 h-16 bg-accent rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                      <item.icon className="h-8 w-8 text-ivory" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-accent font-bold text-sm">{item.highlight}</span>
+                      <h3 className="text-2xl font-bold text-ivory mb-3 font-serif">{item.title}</h3>
+                      <p className="text-ivory/80 leading-relaxed">{item.description}</p>
+                    </div>
                   </div>
                 </motion.div>
               </motion.div>
