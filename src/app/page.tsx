@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { useState } from "react";
 import Image from "next/image";
 import {
@@ -23,7 +22,11 @@ import { FaTwitter, FaInstagram } from "react-icons/fa";
 
 export default function Home() {
   const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [alreadyExists, setAlreadyExists] = useState(false);
 
   const features = [
     {
@@ -949,25 +952,71 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
-                setIsSubmitted(true);
+                setIsLoading(true);
+                
+                try {
+                  const response = await fetch('/api/waitlist', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                      email,
+                      firstName,
+                      lastName,
+                    }),
+                  });
+
+                  const data = await response.json();
+                  
+                  if (response.ok) {
+                    setIsSubmitted(true);
+                    setAlreadyExists(data.alreadyExists || false);
+                  } else {
+                    alert(data.error || 'Something went wrong. Please try again.');
+                  }
+                } catch (error) {
+                  console.error('Error:', error);
+                  alert('Failed to join waitlist. Please try again.');
+                } finally {
+                  setIsLoading(false);
+                }
               }}
             >
               {!isSubmitted ? (
                 <>
-                  <div className="grid md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                      <label htmlFor="name" className="block text-ivory/80 mb-2 font-medium">
-                        First Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        placeholder="Enter your first name"
-                        className="w-full px-5 py-4 rounded-lg bg-ivory/20 border border-ivory/30 text-ivory placeholder-ivory/50 focus:border-accent focus:bg-ivory/25 focus:outline-none transition-all"
-                        required
-                      />
+                  <div className="space-y-6 mb-6">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label htmlFor="firstName" className="block text-ivory/80 mb-2 font-medium">
+                          First Name
+                        </label>
+                        <input
+                          type="text"
+                          id="firstName"
+                          placeholder="John"
+                          value={firstName}
+                          onChange={(e) => setFirstName(e.target.value)}
+                          className="w-full px-5 py-4 rounded-lg bg-ivory/20 border border-ivory/30 text-ivory placeholder-ivory/50 focus:border-accent focus:bg-ivory/25 focus:outline-none transition-all"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="lastName" className="block text-ivory/80 mb-2 font-medium">
+                          Last Name
+                        </label>
+                        <input
+                          type="text"
+                          id="lastName"
+                          placeholder="Doe"
+                          value={lastName}
+                          onChange={(e) => setLastName(e.target.value)}
+                          className="w-full px-5 py-4 rounded-lg bg-ivory/20 border border-ivory/30 text-ivory placeholder-ivory/50 focus:border-accent focus:bg-ivory/25 focus:outline-none transition-all"
+                          required
+                        />
+                      </div>
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-ivory/80 mb-2 font-medium">
@@ -976,7 +1025,7 @@ export default function Home() {
                       <input
                         type="email"
                         id="email"
-                        placeholder="Enter your email"
+                        placeholder="john.doe@example.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         className="w-full px-5 py-4 rounded-lg bg-ivory/20 border border-ivory/30 text-ivory placeholder-ivory/50 focus:border-accent focus:bg-ivory/25 focus:outline-none transition-all"
@@ -992,10 +1041,11 @@ export default function Home() {
                     <Button 
                       type="submit"
                       size="lg"
-                      className="w-full bg-accent hover:bg-accent/90 text-ivory text-xl py-6 shadow-xl hover:shadow-2xl transition-all duration-300 font-semibold"
+                      disabled={isLoading}
+                      className="w-full bg-accent hover:bg-accent/90 text-ivory text-xl py-6 shadow-xl hover:shadow-2xl transition-all duration-300 font-semibold disabled:opacity-50"
                     >
-                      Join Now
-                      <ArrowRight className="ml-2 h-6 w-6" />
+                      {isLoading ? "Joining..." : "Join Now"}
+                      {!isLoading && <ArrowRight className="ml-2 h-6 w-6" />}
                     </Button>
                   </motion.div>
 
@@ -1015,15 +1065,43 @@ export default function Home() {
                     animate={{ scale: 1 }}
                     transition={{ type: "spring", stiffness: 200 }}
                   >
-                    <CheckCircle className="h-20 w-20 text-accent mx-auto mb-6" />
+                    {alreadyExists ? (
+                      <Shield className="h-20 w-20 text-accent mx-auto mb-6" />
+                    ) : (
+                      <CheckCircle className="h-20 w-20 text-accent mx-auto mb-6" />
+                    )}
                   </motion.div>
-                  <h3 className="text-3xl font-bold text-ivory mb-3 font-serif">Welcome to the RISE Family!</h3>
+                  <h3 className="text-3xl font-bold text-ivory mb-3 font-serif">
+                    {alreadyExists ? "You're Already In!" : "Welcome to the RISE Family!"}
+                  </h3>
                   <p className="text-ivory/80 text-lg">
-                    You&apos;re on the list. We&apos;ll notify you as soon as RISE launches.
+                    {alreadyExists 
+                      ? "Great news! You're already on our exclusive waitlist."
+                      : "You're on the list. We'll notify you as soon as RISE launches."
+                    }
                   </p>
                   <p className="text-accent mt-4 text-lg font-semibold">
-                    Check your email for exclusive updates!
+                    {alreadyExists 
+                      ? "Keep an eye on your inbox for updates!"
+                      : "Check your email for exclusive updates!"
+                    }
                   </p>
+                  {alreadyExists && (
+                    <motion.button
+                      onClick={() => {
+                        setIsSubmitted(false);
+                        setAlreadyExists(false);
+                        setEmail("");
+                        setFirstName("");
+                        setLastName("");
+                      }}
+                      className="mt-6 text-ivory/60 underline hover:text-ivory/80 transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Try with a different email
+                    </motion.button>
+                  )}
                 </motion.div>
               )}
             </motion.form>
