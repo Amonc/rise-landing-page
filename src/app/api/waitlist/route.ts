@@ -64,65 +64,71 @@ export async function POST(request: Request) {
 
     const contactData = createContactResponse.ok ? await createContactResponse.json() : null;
 
-    // Send confirmation email
-    const { data, error } = await resend.emails.send({
-      from: `${process.env.RESEND_FROM_NAME} <${process.env.RESEND_FROM_EMAIL}>`,
-      to: [email],
-      subject: 'Welcome to the RISE Waitlist!',
-      html: `
-        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-          <h1 style="color: #3A3E38; font-size: 28px; margin-bottom: 16px;">Welcome to RISE, ${firstName}!</h1>
-          
-          <p style="color: #3A3E38; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
-            Thank you for joining our waitlist! We're thrilled to have you on board as we prepare to launch RISE - your AI-powered wardrobe assistant.
-          </p>
-          
-          <div style="background-color: #F5EFE1; border-radius: 12px; padding: 24px; margin-bottom: 24px;">
-            <h2 style="color: #3A3E38; font-size: 20px; margin-bottom: 12px;">What happens next?</h2>
-            <ul style="color: #3A3E38; font-size: 16px; line-height: 1.8; margin: 0; padding-left: 20px;">
-              <li>You're now on our exclusive waitlist</li>
-              <li>We'll keep you updated on our progress</li>
-              <li>You'll get early access when we launch</li>
-              <li>Exclusive perks and offers for early supporters</li>
-            </ul>
-          </div>
-          
-          <p style="color: #3A3E38; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
-            While you wait, follow us on social media to stay connected with the latest updates and fashion tips from RISE!
-          </p>
-          
-          <div style="border-top: 1px solid #CEC5AB; padding-top: 24px; margin-top: 32px;">
-            <p style="color: #9A917A; font-size: 14px; line-height: 1.6; margin: 0;">
-              You're receiving this email because you signed up for the RISE waitlist. If you didn't sign up, please ignore this email.
-            </p>
-            <p style="color: #9A917A; font-size: 14px; line-height: 1.6; margin: 8px 0 0;">
-              © 2025 RISE. All rights reserved.
-            </p>
-          </div>
-        </div>
-      `,
-    });
-
-    if (error) {
-      console.error('Resend error:', error);
-      return NextResponse.json(
-        { error: 'Failed to send confirmation email' },
-        { status: 500 }
-      );
-    }
-
-    // Here you could also save the waitlist entry to a database
-    // For now, we're just sending the email and adding to contacts
-
-    return NextResponse.json(
+    // Send response immediately to UI
+    const response = NextResponse.json(
       { 
         message: 'Successfully joined waitlist!', 
-        emailId: data,
         contactId: contactData?.id || null,
         alreadyExists: false
       },
       { status: 200 }
     );
+
+    // Send confirmation email asynchronously with 1-second delay
+    (async () => {
+      try {
+        // Add 1-second delay between audience creation and email sending
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        const { data, error } = await resend.emails.send({
+          from: `${process.env.RESEND_FROM_NAME} <${process.env.RESEND_FROM_EMAIL}>`,
+          to: [email],
+          subject: 'Welcome to the RISE Waitlist!',
+          html: `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+              <h1 style="color: #3A3E38; font-size: 28px; margin-bottom: 16px;">Welcome to RISE, ${firstName}!</h1>
+              
+              <p style="color: #3A3E38; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
+                Thank you for joining our waitlist! We're thrilled to have you on board as we prepare to launch RISE - your AI-powered wardrobe assistant.
+              </p>
+              
+              <div style="background-color: #F5EFE1; border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+                <h2 style="color: #3A3E38; font-size: 20px; margin-bottom: 12px;">What happens next?</h2>
+                <ul style="color: #3A3E38; font-size: 16px; line-height: 1.8; margin: 0; padding-left: 20px;">
+                  <li>You're now on our exclusive waitlist</li>
+                  <li>We'll keep you updated on our progress</li>
+                  <li>You'll get early access when we launch</li>
+                  <li>Exclusive perks and offers for early supporters</li>
+                </ul>
+              </div>
+              
+              <p style="color: #3A3E38; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
+                While you wait, follow us on social media to stay connected with the latest updates and fashion tips from RISE!
+              </p>
+              
+              <div style="border-top: 1px solid #CEC5AB; padding-top: 24px; margin-top: 32px;">
+                <p style="color: #9A917A; font-size: 14px; line-height: 1.6; margin: 0;">
+                  You're receiving this email because you signed up for the RISE waitlist. If you didn't sign up, please ignore this email.
+                </p>
+                <p style="color: #9A917A; font-size: 14px; line-height: 1.6; margin: 8px 0 0;">
+                  © 2025 RISE. All rights reserved.
+                </p>
+              </div>
+            </div>
+          `,
+        });
+
+        if (error) {
+          console.error('Resend error:', error);
+        } else {
+          console.log('Confirmation email sent successfully:', data);
+        }
+      } catch (error) {
+        console.error('Error sending confirmation email:', error);
+      }
+    })();
+
+    return response;
   } catch (error) {
     console.error('Waitlist error:', error);
     return NextResponse.json(
