@@ -35,12 +35,12 @@ export default function Home() {
       description: "Just scan the tag — RISE instantly adds it with brand, color, and style.",
       image: "/images/core-features/barcode-scan.png",
     },
-    {
+    /* {
       icon: Zap,
       title: "Receipt Importing",
-      description: "Upload receipts {/* or email confirmations */} — your new items appear in your closet automatically.",
+      description: "Upload receipts or email confirmations — your new items appear in your closet automatically.",
       image: "/images/core-features/receipt-import.png",
-    },
+    }, */
     {
       icon: Sparkles,
       title: "AI Outfit Suggestions",
