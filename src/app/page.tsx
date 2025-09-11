@@ -38,7 +38,7 @@ export default function Home() {
     {
       icon: Zap,
       title: "Receipt Importing",
-      description: "Upload receipts or email confirmations — your new items appear in your closet automatically.",
+      description: "Upload receipts {/* or email confirmations */} — your new items appear in your closet automatically.",
       image: "/images/core-features/receipt-import.png",
     },
     {
