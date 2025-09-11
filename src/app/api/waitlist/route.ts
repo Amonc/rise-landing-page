@@ -77,8 +77,18 @@ export async function POST(request: Request) {
     // Send confirmation email asynchronously with 1-second delay
     (async () => {
       try {
+        console.log(`Starting email send process for ${email}, contactCreated: ${createContactResponse.ok}`);
+        
+        // Only send email if contact was successfully created
+        if (!createContactResponse.ok) {
+          console.log(`Skipping email send - contact creation failed for ${email}`);
+          return;
+        }
+        
         // Add 1-second delay between audience creation and email sending
         await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        console.log(`Sending confirmation email to ${email}`);
 
         const { data, error } = await resend.emails.send({
           from: `${process.env.RESEND_FROM_NAME} <${process.env.RESEND_FROM_EMAIL}>`,
