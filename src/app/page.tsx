@@ -156,11 +156,11 @@ export default function Home() {
               Download
             </a>
           </div>
-          <Button 
+          <Button
             className="bg-accent hover:bg-accent/90 text-ivory shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-2.5"
             onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Join Waitlist
+            Join Beta
           </Button>
         </nav>
       </header>
@@ -193,13 +193,13 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-auto">
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     className="bg-accent hover:bg-accent/90 text-ivory text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 shadow-xl hover:shadow-2xl transition-all duration-300"
                     onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}
                   >
                     <Sparkles className="mr-2 h-4 sm:h-5 w-4 sm:w-5" />
-                    Join the Waitlist
+                    Download Beta Now
                   </Button>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-auto">
@@ -861,8 +861,8 @@ export default function Home() {
                 >
                   50K+
                 </motion.p>
-                <p className="text-ivory/90 text-lg sm:text-xl font-semibold">Early Signups</p>
-                <p className="text-ivory/80 mt-2">Join the waitlist before it&apos;s too late</p>
+                <p className="text-ivory/90 text-lg sm:text-xl font-semibold">Beta Testers</p>
+                <p className="text-ivory/80 mt-2">Join now and help shape RISE</p>
               </motion.div>
             </div>
           </div>
@@ -884,35 +884,35 @@ export default function Home() {
               whileInView={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200 }}
             >
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-accent hover:bg-accent/90 text-ivory text-xl px-12 py-8 shadow-2xl hover:shadow-3xl transition-all duration-300 font-semibold mb-6"
                 onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <Sparkles className="mr-3 h-6 w-6" />
-                Join the Waitlist
+                Get Beta Access
                 <ArrowRight className="ml-3 h-6 w-6" />
               </Button>
             </motion.div>
 
             {/* Social Proof Line */}
-            <motion.p 
+            <motion.p
               className="text-2xl text-charcoal/80 font-semibold mb-4"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              Join <span className="text-accent font-bold">2K+</span> already on the waitlist
+              Join <span className="text-accent font-bold">2K+</span> already testing RISE
             </motion.p>
 
             {/* Supporting Line */}
-            <motion.p 
+            <motion.p
               className="text-lg text-charcoal/60"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              Launching soon on iOS
+              Beta now available on TestFlight
             </motion.p>
           </motion.div>
         </div>
@@ -939,10 +939,10 @@ export default function Home() {
             {/* Headlines */}
             <div className="text-center mb-12">
               <h2 className="text-5xl md:text-6xl font-bold text-ivory mb-4 font-serif">
-                Be the First to Try RISE
+                Start Using RISE Today
               </h2>
               <p className="text-xl md:text-2xl text-ivory/80">
-                Join the waitlist today for exclusive early access and launch updates.
+                Join the beta and get instant access via TestFlight. Help shape the future of RISE!
               </p>
             </div>
 
@@ -1051,7 +1051,7 @@ export default function Home() {
 
                   {/* Incentive line */}
                   <p className="text-center text-ivory/70 mt-6 text-lg">
-                    ✨ Early members get priority invites + insider perks
+                    ✨ Beta testers get exclusive early features + insider perks
                   </p>
                 </>
               ) : (
@@ -1072,18 +1072,18 @@ export default function Home() {
                     )}
                   </motion.div>
                   <h3 className="text-3xl font-bold text-ivory mb-3 font-serif">
-                    {alreadyExists ? "You're Already In!" : "Welcome to the RISE Family!"}
+                    {alreadyExists ? "You're Already In!" : "Welcome to RISE Beta!"}
                   </h3>
                   <p className="text-ivory/80 text-lg">
-                    {alreadyExists 
-                      ? "Great news! You're already on our exclusive waitlist."
-                      : "You're on the list. We'll notify you as soon as RISE launches."
+                    {alreadyExists
+                      ? "Great news! You're already signed up for the beta."
+                      : "Check your email for TestFlight download links and get started now!"
                     }
                   </p>
                   <p className="text-accent mt-4 text-lg font-semibold">
-                    {alreadyExists 
-                      ? "Keep an eye on your inbox for updates!"
-                      : "Check your email for exclusive updates!"
+                    {alreadyExists
+                      ? "Check your inbox for TestFlight download links!"
+                      : "Download the app and start organizing your wardrobe!"
                     }
                   </p>
                   {alreadyExists && (
@@ -1122,12 +1122,12 @@ export default function Home() {
                 <Zap className="h-5 w-5 text-accent" />
                 No Spam, Ever
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-2 text-ivory/70"
                 whileHover={{ x: 5 }}
               >
                 <Star className="h-5 w-5 text-accent" />
-                VIP Launch Access
+                Instant Beta Access
               </motion.div>
             </div>
           </motion.div>
@@ -1190,7 +1190,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a href="#download" className="text-ivory/70 hover:text-accent transition-colors">
-                    Join Waitlist
+                    Join Beta
                   </a>
                 </li>
               </ul>
@@ -1223,7 +1223,7 @@ export default function Home() {
           <div className="border-t border-ivory/20 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-ivory/60 text-sm">
-                &copy; 2024 RISE. All rights reserved.
+                &copy; 2025 RISE. All rights reserved.
               </p>
               <p className="text-ivory/60 text-sm">
                 Made with ❤️ for smarter mornings
