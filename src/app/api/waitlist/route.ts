@@ -93,29 +93,51 @@ export async function POST(request: Request) {
         const { data, error } = await resend.emails.send({
           from: `${process.env.RESEND_FROM_NAME} <${process.env.RESEND_FROM_EMAIL}>`,
           to: [email],
-          subject: 'Welcome to the RISE Waitlist!',
+          subject: 'Welcome to RISE Beta - Download Now!',
           html: `
             <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
               <h1 style="color: #3A3E38; font-size: 28px; margin-bottom: 16px;">Welcome to RISE, ${firstName}!</h1>
-              
+
               <p style="color: #3A3E38; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
-                Thank you for joining our waitlist! We're thrilled to have you on board as we prepare to launch RISE - your AI-powered wardrobe assistant.
+                Great news! The RISE beta is now available for download. Thank you for joining us - we're thrilled to have you test our AI-powered wardrobe assistant!
               </p>
-              
+
               <div style="background-color: #F5EFE1; border-radius: 12px; padding: 24px; margin-bottom: 24px;">
-                <h2 style="color: #3A3E38; font-size: 20px; margin-bottom: 12px;">What happens next?</h2>
+                <h2 style="color: #3A3E38; font-size: 20px; margin-bottom: 16px;">Get Started with RISE Beta</h2>
+                <p style="color: #3A3E38; font-size: 16px; line-height: 1.6; margin-bottom: 16px;">
+                  Follow these simple steps to start using RISE:
+                </p>
+                <ol style="color: #3A3E38; font-size: 16px; line-height: 1.8; margin: 0; padding-left: 20px;">
+                  <li style="margin-bottom: 8px;">Download TestFlight from the App Store (if you don't have it already)</li>
+                  <li style="margin-bottom: 8px;">Join the RISE beta using your TestFlight app</li>
+                  <li>Start organizing your wardrobe with AI!</li>
+                </ol>
+              </div>
+
+              <div style="text-align: center; margin-bottom: 32px;">
+                <a href="https://testflight.apple.com/join/UdK3zbdB" style="display: inline-block; background-color: #3A3E38; color: #FBF4E1; text-decoration: none; padding: 16px 32px; border-radius: 8px; font-size: 16px; font-weight: 600; margin-bottom: 12px;">
+                  Join RISE Beta on TestFlight
+                </a>
+                <br>
+                <a href="https://apps.apple.com/fr/app/testflight/id899247664" style="display: inline-block; color: #9A917A; text-decoration: none; font-size: 14px; margin-top: 12px;">
+                  Don't have TestFlight? Download it here
+                </a>
+              </div>
+
+              <div style="background-color: #F5EFE1; border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+                <h2 style="color: #3A3E38; font-size: 20px; margin-bottom: 12px;">What you'll get:</h2>
                 <ul style="color: #3A3E38; font-size: 16px; line-height: 1.8; margin: 0; padding-left: 20px;">
-                  <li>You're now on our exclusive waitlist</li>
-                  <li>We'll keep you updated on our progress</li>
-                  <li>You'll get early access when we launch</li>
-                  <li>Exclusive perks and offers for early supporters</li>
+                  <li>Early access to RISE features</li>
+                  <li>Direct influence on the app's development</li>
+                  <li>Priority support from our team</li>
+                  <li>Exclusive perks for beta testers</li>
                 </ul>
               </div>
-              
+
               <p style="color: #3A3E38; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
-                While you wait, follow us on social media to stay connected with the latest updates and fashion tips from RISE!
+                We'd love to hear your feedback! Your input will help us make RISE the best wardrobe assistant possible. Follow us on social media to stay connected with the latest updates and fashion tips!
               </p>
-              
+
               <div style="border-top: 1px solid #CEC5AB; padding-top: 24px; margin-top: 32px;">
                 <p style="color: #9A917A; font-size: 14px; line-height: 1.6; margin: 0;">
                   You're receiving this email because you signed up for the RISE waitlist. If you didn't sign up, please ignore this email.
