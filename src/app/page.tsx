@@ -223,15 +223,15 @@ export default function Home() {
               className="relative flex justify-center lg:justify-end mt-8 sm:mt-12 lg:mt-0"
             >
               {/* Mockup container with exact dimensions */}
-              <div className="relative w-64 sm:w-72 md:w-64 lg:w-56 xl:w-64">
-                <motion.img 
-                  src="/images/mockup-portrait.png" 
+              <div className="relative w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl">
+                <motion.img
+                  src="/images/app-mockup.png"
                   alt="RISE App Interface"
                   className="w-full relative z-10 drop-shadow-2xl"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 />
-                
+
                 {/* Decorative background accent */}
                 <div className="absolute inset-0 bg-accent/10 blur-3xl rounded-full scale-150 -z-10" />
               </div>
