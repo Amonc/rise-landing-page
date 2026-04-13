@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { VideoModal } from "@/components/ui/video-modal";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Image from "next/image";
@@ -8,6 +9,7 @@ import {
   Shirt,
   Calendar,
   Camera,
+  Play,
   Sparkles,
   TrendingUp,
   Brain,
@@ -27,6 +29,7 @@ export default function Home() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [alreadyExists, setAlreadyExists] = useState(false);
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const features = [
     {
@@ -207,8 +210,9 @@ export default function Home() {
                     size="lg" 
                     variant="outline"
                     className="border-2 border-accent text-accent hover:bg-accent hover:text-ivory text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 transition-all duration-300"
-                    onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => setIsVideoOpen(true)}
                   >
+                    <Play className="mr-2 h-4 sm:h-5 w-4 sm:w-5" />
                     Watch RISE in Action
                   </Button>
                 </motion.div>
@@ -1233,6 +1237,13 @@ export default function Home() {
         </div>
       </footer>
 
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={isVideoOpen}
+        onClose={() => setIsVideoOpen(false)}
+        videoSrc="/videos/rise-demo.mp4"
+        posterSrc="/videos/rise-demo-poster.jpg"
+      />
     </div>
   );
 }
