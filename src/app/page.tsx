@@ -5,6 +5,7 @@ import { VideoModal } from "@/components/ui/video-modal";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Shirt,
   Calendar,
@@ -1205,19 +1206,19 @@ export default function Home() {
               <h4 className="text-ivory font-semibold mb-4 text-lg">Legal</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="#" className="text-ivory/70 hover:text-accent transition-colors">
+                  <Link href="/privacy" className="text-ivory/70 hover:text-accent transition-colors">
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-ivory/70 hover:text-accent transition-colors">
+                  <Link href="/terms" className="text-ivory/70 hover:text-accent transition-colors">
                     Terms of Service
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-ivory/70 hover:text-accent transition-colors">
+                  <Link href="/cookies" className="text-ivory/70 hover:text-accent transition-colors">
                     Cookie Policy
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
