@@ -43,7 +43,7 @@ export default function CookiesPage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">5. Contact Us</h2>
             <p className="text-lg">
-              If you have questions about our use of cookies, please contact us at privacy@riseapp.com
+              If you have questions about our use of cookies, please contact us at support@getriseapp.com
             </p>
           </section>
         </div>

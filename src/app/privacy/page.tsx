@@ -59,7 +59,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">6. Contact Us</h2>
             <p className="text-lg">
-              If you have questions about this Privacy Policy, please contact us at privacy@riseapp.com
+              If you have questions about this Privacy Policy, please contact us at support@getriseapp.com
             </p>
           </section>
         </div>

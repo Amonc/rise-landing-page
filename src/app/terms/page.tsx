@@ -82,9 +82,24 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-4">10. Contact Information</h2>
+            <h2 className="text-2xl font-semibold mb-4">10. Subscriptions and Payments</h2>
+            <p className="text-lg mb-4">
+              RISE offers optional auto-renewable subscriptions (RISE Premium) that unlock additional features such as unlimited outfit suggestions, calendar-aware styling, and expanded reminders and history.
+            </p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Subscriptions are offered on a monthly or annual basis. The price and billing period are shown in the app before you confirm a purchase.</li>
+              <li>Payment is charged to your Apple App Store or Google Play account at confirmation of purchase.</li>
+              <li>Subscriptions automatically renew for the same period at the then-current price unless auto-renew is turned off at least 24 hours before the end of the current period.</li>
+              <li>Your account is charged for renewal within 24 hours prior to the end of the current period.</li>
+              <li>You can manage your subscription and turn off auto-renewal in your App Store or Google Play account settings at any time. Deleting the app does not cancel your subscription.</li>
+              <li>Where a free trial is offered, any unused portion is forfeited when you purchase a subscription to that service.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">11. Contact Information</h2>
             <p className="text-lg">
-              For questions about these Terms of Service, please contact us at legal@riseapp.com
+              For questions about these Terms of Service, please contact us at support@getriseapp.com
             </p>
           </section>
         </div>
