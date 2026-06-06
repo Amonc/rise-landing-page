@@ -17,19 +17,48 @@ import {
   Clock,
   Zap,
   Shield,
-  CheckCircle,
-  ArrowRight,
   Star,
 } from "lucide-react";
-import { FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaTwitter, FaInstagram, FaApple } from "react-icons/fa";
+
+const APP_STORE_URL =
+  "https://apps.apple.com/us/app/rise-ai-closet-app/id6752766816";
+
+function AppStoreBadge({
+  size = "default",
+  theme = "dark",
+  className = "",
+}: {
+  size?: "default" | "lg";
+  theme?: "dark" | "light";
+  className?: string;
+}) {
+  const themeStyles =
+    theme === "dark"
+      ? "bg-charcoal text-ivory hover:bg-charcoal/90"
+      : "bg-ivory text-charcoal hover:bg-ivory/90";
+  const sizeStyles = size === "lg" ? "px-6 py-2 gap-2.5" : "px-4 py-1.5 gap-2";
+  const iconSize = size === "lg" ? "h-7 w-7" : "h-5 w-5";
+  const topText = size === "lg" ? "text-[11px]" : "text-[9px]";
+  const bottomText = size === "lg" ? "text-xl" : "text-base";
+
+  return (
+    <a
+      href={APP_STORE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 ${themeStyles} ${sizeStyles} ${className}`}
+    >
+      <FaApple className={iconSize} />
+      <span className="flex flex-col items-start text-left leading-none">
+        <span className={`${topText} font-medium opacity-90`}>Download on the</span>
+        <span className={`${bottomText} font-semibold leading-tight`}>App Store</span>
+      </span>
+    </a>
+  );
+}
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [alreadyExists, setAlreadyExists] = useState(false);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const features = [
@@ -160,12 +189,7 @@ export default function Home() {
               Download
             </a>
           </div>
-          <Button
-            className="bg-accent hover:bg-accent/90 text-ivory shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-2.5"
-            onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Join Beta
-          </Button>
+          <AppStoreBadge />
         </nav>
       </header>
 
@@ -195,22 +219,15 @@ export default function Home() {
               <p className="text-base sm:text-lg md:text-xl text-charcoal/70 mb-6 md:mb-8 max-w-4xl leading-relaxed mx-auto lg:mx-0">
                 The only wardrobe app that truly understands your style. Organize, track, and get personalized outfit suggestions powered by cutting-edge AI.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-auto">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center sm:items-stretch">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-auto flex">
+                  <AppStoreBadge size="lg" className="h-full" />
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-auto flex">
                   <Button
                     size="lg"
-                    className="bg-accent hover:bg-accent/90 text-ivory text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 shadow-xl hover:shadow-2xl transition-all duration-300"
-                    onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}
-                  >
-                    <Sparkles className="mr-2 h-4 sm:h-5 w-4 sm:w-5" />
-                    Download Beta Now
-                  </Button>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-auto">
-                  <Button 
-                    size="lg" 
                     variant="outline"
-                    className="border-2 border-accent text-accent hover:bg-accent hover:text-ivory text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 transition-all duration-300"
+                    className="h-full border-2 border-accent text-accent hover:bg-accent hover:text-ivory text-base sm:text-lg px-6 sm:px-8 py-4 transition-all duration-300"
                     onClick={() => setIsVideoOpen(true)}
                   >
                     <Play className="mr-2 h-4 sm:h-5 w-4 sm:w-5" />
@@ -831,7 +848,7 @@ export default function Home() {
                 <p className="text-charcoal/80 text-lg italic mb-4">
                   &quot;RISE completely changed my morning routine. I save so much time and actually feel confident in what I wear every day.&quot;
                 </p>
-                <p className="text-charcoal font-semibold">— Sarah K., Beta User</p>
+                <p className="text-charcoal font-semibold">— Sarah K., RISE User</p>
               </motion.div>
 
               <motion.div
@@ -866,15 +883,15 @@ export default function Home() {
                 >
                   50K+
                 </motion.p>
-                <p className="text-ivory/90 text-lg sm:text-xl font-semibold">Beta Testers</p>
-                <p className="text-ivory/80 mt-2">Join now and help shape RISE</p>
+                <p className="text-ivory/90 text-lg sm:text-xl font-semibold">Happy Users</p>
+                <p className="text-ivory/80 mt-2">Download RISE and join them today</p>
               </motion.div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Social Proof / Waitlist CTA Section */}
+      {/* Social Proof / Download CTA Section */}
       <section className="py-20 bg-gradient-to-br from-sand/20 to-surface">
         <div className="container mx-auto px-6">
           <motion.div
@@ -889,15 +906,7 @@ export default function Home() {
               whileInView={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200 }}
             >
-              <Button
-                size="lg"
-                className="bg-accent hover:bg-accent/90 text-ivory text-xl px-12 py-8 shadow-2xl hover:shadow-3xl transition-all duration-300 font-semibold mb-6"
-                onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                <Sparkles className="mr-3 h-6 w-6" />
-                Get Beta Access
-                <ArrowRight className="ml-3 h-6 w-6" />
-              </Button>
+              <AppStoreBadge size="lg" className="mb-6" />
             </motion.div>
 
             {/* Social Proof Line */}
@@ -907,7 +916,7 @@ export default function Home() {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              Join <span className="text-accent font-bold">2K+</span> already testing RISE
+              Join <span className="text-accent font-bold">2K+</span> already using RISE
             </motion.p>
 
             {/* Supporting Line */}
@@ -917,13 +926,13 @@ export default function Home() {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              Beta now available on TestFlight
+              Now available on the App Store
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* Full-Width Waitlist Signup Section */}
+      {/* Full-Width Download Section */}
       <section id="download" className="py-24 bg-gradient-to-br from-charcoal via-charcoal/95 to-charcoal relative overflow-hidden">
         <motion.div
           className="absolute inset-0"
@@ -944,172 +953,31 @@ export default function Home() {
             {/* Headlines */}
             <div className="text-center mb-12">
               <h2 className="text-5xl md:text-6xl font-bold text-ivory mb-4 font-serif">
-                Start Using RISE Today
+                Download RISE Today
               </h2>
               <p className="text-xl md:text-2xl text-ivory/80">
-                Join the beta and get instant access via TestFlight. Help shape the future of RISE!
+                Your AI-powered wardrobe assistant is now live on the App Store. Download it free and transform your mornings.
               </p>
             </div>
 
-            {/* Inline Signup Form */}
-            <motion.form 
-              className="bg-ivory/10 backdrop-blur-md rounded-2xl p-8 md:p-10 shadow-2xl border border-ivory/20"
+            {/* Download CTA */}
+            <motion.div
+              className="bg-ivory/10 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl border border-ivory/20 flex flex-col items-center text-center"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              onSubmit={async (e) => {
-                e.preventDefault();
-                setIsLoading(true);
-                
-                try {
-                  const response = await fetch('/api/waitlist', {
-                    method: 'POST',
-                    headers: {
-                      'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                      email,
-                      firstName,
-                      lastName,
-                    }),
-                  });
-
-                  const data = await response.json();
-                  
-                  if (response.ok) {
-                    setIsSubmitted(true);
-                    setAlreadyExists(data.alreadyExists || false);
-                  } else {
-                    alert(data.error || 'Something went wrong. Please try again.');
-                  }
-                } catch (error) {
-                  console.error('Error:', error);
-                  alert('Failed to join waitlist. Please try again.');
-                } finally {
-                  setIsLoading(false);
-                }
-              }}
             >
-              {!isSubmitted ? (
-                <>
-                  <div className="space-y-6 mb-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="firstName" className="block text-ivory/80 mb-2 font-medium">
-                          First Name
-                        </label>
-                        <input
-                          type="text"
-                          id="firstName"
-                          placeholder="John"
-                          value={firstName}
-                          onChange={(e) => setFirstName(e.target.value)}
-                          className="w-full px-5 py-4 rounded-lg bg-ivory/20 border border-ivory/30 text-ivory placeholder-ivory/50 focus:border-accent focus:bg-ivory/25 focus:outline-none transition-all"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="lastName" className="block text-ivory/80 mb-2 font-medium">
-                          Last Name
-                        </label>
-                        <input
-                          type="text"
-                          id="lastName"
-                          placeholder="Doe"
-                          value={lastName}
-                          onChange={(e) => setLastName(e.target.value)}
-                          className="w-full px-5 py-4 rounded-lg bg-ivory/20 border border-ivory/30 text-ivory placeholder-ivory/50 focus:border-accent focus:bg-ivory/25 focus:outline-none transition-all"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-ivory/80 mb-2 font-medium">
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        placeholder="john.doe@example.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-5 py-4 rounded-lg bg-ivory/20 border border-ivory/30 text-ivory placeholder-ivory/50 focus:border-accent focus:bg-ivory/25 focus:outline-none transition-all"
-                        required
-                      />
-                    </div>
-                  </div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <AppStoreBadge size="lg" theme="light" />
+              </motion.div>
 
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Button 
-                      type="submit"
-                      size="lg"
-                      disabled={isLoading}
-                      className="w-full bg-accent hover:bg-accent/90 text-ivory text-xl py-6 shadow-xl hover:shadow-2xl transition-all duration-300 font-semibold disabled:opacity-50"
-                    >
-                      {isLoading ? "Joining..." : "Join Now"}
-                      {!isLoading && <ArrowRight className="ml-2 h-6 w-6" />}
-                    </Button>
-                  </motion.div>
-
-                  {/* Incentive line */}
-                  <p className="text-center text-ivory/70 mt-6 text-lg">
-                    ✨ Beta testers get exclusive early features + insider perks
-                  </p>
-                </>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-center py-12"
-                >
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 200 }}
-                  >
-                    {alreadyExists ? (
-                      <Shield className="h-20 w-20 text-accent mx-auto mb-6" />
-                    ) : (
-                      <CheckCircle className="h-20 w-20 text-accent mx-auto mb-6" />
-                    )}
-                  </motion.div>
-                  <h3 className="text-3xl font-bold text-ivory mb-3 font-serif">
-                    {alreadyExists ? "You're Already In!" : "Welcome to RISE Beta!"}
-                  </h3>
-                  <p className="text-ivory/80 text-lg">
-                    {alreadyExists
-                      ? "Great news! You're already signed up for the beta."
-                      : "Check your email for TestFlight download links and get started now!"
-                    }
-                  </p>
-                  <p className="text-accent mt-4 text-lg font-semibold">
-                    {alreadyExists
-                      ? "Check your inbox for TestFlight download links!"
-                      : "Download the app and start organizing your wardrobe!"
-                    }
-                  </p>
-                  {alreadyExists && (
-                    <motion.button
-                      onClick={() => {
-                        setIsSubmitted(false);
-                        setAlreadyExists(false);
-                        setEmail("");
-                        setFirstName("");
-                        setLastName("");
-                      }}
-                      className="mt-6 text-ivory/60 underline hover:text-ivory/80 transition-colors"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Try with a different email
-                    </motion.button>
-                  )}
-                </motion.div>
-              )}
-            </motion.form>
+              <p className="text-ivory/70 mt-6 text-lg">
+                Free to download on iPhone — start organizing your wardrobe in minutes.
+              </p>
+            </motion.div>
 
             {/* Trust indicators */}
             <div className="flex flex-wrap gap-6 justify-center items-center mt-10">
@@ -1132,7 +1000,7 @@ export default function Home() {
                 whileHover={{ x: 5 }}
               >
                 <Star className="h-5 w-5 text-accent" />
-                Instant Beta Access
+                Free to Download
               </motion.div>
             </div>
           </motion.div>
@@ -1195,7 +1063,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a href="#download" className="text-ivory/70 hover:text-accent transition-colors">
-                    Join Beta
+                    Download
                   </a>
                 </li>
               </ul>
